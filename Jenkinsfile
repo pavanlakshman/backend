@@ -12,8 +12,8 @@ pipeline {
     // }
     environment{
         def appVersion = '' //variable declaration
-    //    nexusUrl = 'nexus.pavandevops.online:8081'
-    //    region = "us-east-1"
+        nexusUrl = '98.81.7.205:8081/'
+        region = "us-east-1"
         account_id = "590183941016"
     }
     stages {
@@ -87,27 +87,27 @@ pipeline {
     //         }
     //     } 
 
-    //      stage('Nexus Artifact Upload'){
-    //         steps{
-    //             script{
-    //                 nexusArtifactUploader(
-    //                     nexusVersion: 'nexus3',
-    //                     protocol: 'http',
-    //                     nexusUrl: "${nexusUrl}",
-    //                     groupId: 'com.expense',
-    //                     version: "${appVersion}",
-    //                     repository: "backend",
-    //                     credentialsId: 'nexus-auth',
-    //                     artifacts: [
-    //                         [artifactId: "backend" ,
-    //                         classifier: '',
-    //                         file: "backend-" + "${appVersion}" + '.zip',
-    //                         type: 'zip']
-    //                     ]
-    //                 )
-    //             }
-    //         }
-    //     } 
+         stage('Nexus Artifact Upload'){
+            steps{
+                script{
+                    nexusArtifactUploader(
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: "${nexusUrl}",
+                        groupId: 'com.expense',
+                        version: "${appVersion}",
+                        repository: "backend",
+                        credentialsId: 'nexus-auth',
+                        artifacts: [
+                            [artifactId: "backend" ,
+                            classifier: '',
+                            file: "backend-" + "${appVersion}" + '.zip',
+                            type: 'zip']
+                        ]
+                    )
+                }
+            }
+        } 
     //      stage('Deploy'){
     //         when{
     //             expression{
